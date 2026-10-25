@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#008751" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Exampro Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="toast" class="toast" role="status"></div>
+
+<main id="gate" class="center hidden">
+  <form id="loginForm" class="box">
+    <div class="brand"><span class="mark">E</span>Exampro Admin</div>
+    <p class="sub">Sign in with your admin account.</p>
+    <label>Email<input id="email" type="email" required autocomplete="email" /></label>
+    <label>Password<input id="password" type="password" required autocomplete="current-password" /></label>
+    <p id="loginMsg" class="msg"></p>
+    <button class="btn primary" id="loginBtn">Sign in</button>
+    <a class="link c" href="./">Back to the student app</a>
+  </form>
+</main>
+
+<main id="denied" class="center hidden">
+  <div class="box"><h2>Not an admin account</h2><p class="sub" id="deniedMsg">This account does not have admin access.</p>
+    <a class="btn" href="./">Back to the student app</a><button class="btn" id="deniedOut">Sign out</button></div>
+</main>
+
+<div id="adm" class="shell hidden">
+  <header class="top"><div class="brand sm"><span class="mark">E</span>Exampro Admin</div><span class="mini"><a class="link" href="./">Student app</a><button class="link" id="signOut">Sign out</button></span></header>
+  <section class="content"><div class="panel">
+    <div class="stats s4"><div><b id="anRev">–</b><small>Total revenue</small></div><div><b id="anUsers">–</b><small>Registered users</small></div><div><b id="anPaid">–</b><small>Active pass holders</small></div><div><b id="anQ">–</b><small>Live questions</small></div></div>
+
+    <div class="card"><h2>System checks</h2><p class="sub">Run these first if something is not working. Your keys are never shown.</p>
+      <button class="btn" id="aiTestBtn">Test AI tutor</button><pre id="aiTestOut" class="codes hidden"></pre>
+      <button class="btn" id="healthBtn">Check questions and SdashAPI</button><pre id="healthOut" class="codes hidden"></pre></div>
+
+    <form id="sdashForm" class="card"><h2>Import from SdashAPI</h2><p class="sub">Imports past questions (with images) for one exam, subject and year. Make sure SdashAPI's terms allow you to store them.</p>
+      <label>Exam<select id="sdExam"></select></label>
+      <div class="grid2"><label>Subject<input id="sdSubject" list="subjList" placeholder="e.g. Mathematics" required /><datalist id="subjList"></datalist></label><label>Year<input id="sdYear" type="number" min="1978" max="2100" required /></label></div>
+      <label>Limit (1 to 100)<input id="sdLimit" type="number" min="1" max="100" value="20" required /></label><button class="btn primary" id="sdBtn">Import from SdashAPI</button></form>
+
+    <div class="card"><h2>Flagged questions</h2><div id="repList"></div></div>
+
+    <div class="stats"><div><b id="evErr">–</b><small>Errors, last 24h</small></div><div><b id="evPay">–</b><small>Payment alerts, 7 days</small></div></div>
+    <div class="card"><div class="row"><select id="evLevel"><option value="error">Errors</option><option value="warn">Warnings</option><option value="all">Everything</option></select><button class="btn sm" id="evReload">Refresh</button></div><div id="evList"></div></div>
+  </div></section>
+</div>
+
+<div id="dlg" class="overlay hidden"><div class="box"><h2 id="dlgTitle"></h2><p id="dlgMsg" class="sub"></p><button class="btn primary" id="dlgOk">Yes</button><button class="btn" id="dlgNo">Cancel</button></div></div>
+<script src="config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
