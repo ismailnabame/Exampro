@@ -35,7 +35,8 @@
 <div id="adm" class="shell hidden">
   <header class="top"><div class="brand sm"><span class="mark">E</span>Exampro Admin</div><span class="mini"><a class="link" href="./">Student app</a><button class="link" id="signOut">Sign out</button></span></header>
   <section class="content"><div class="panel">
-    <div class="stats s4"><div><b id="anRev">–</b><small>Total revenue</small></div><div><b id="anUsers">–</b><small>Registered users</small></div><div><b id="anPaid">–</b><small>Active pass holders</small></div><div><b id="anQ">–</b><small>Live questions</small></div></div>
+    <div class="dashhead"><div><b>Dashboard</b><small class="sub" id="asOf"></small></div><button class="btn sm" id="dashReload">Refresh</button></div>
+    <div id="dash"><div class="card"><p class="sub">Loading…</p></div></div>
 
     <div class="card"><h2>System checks</h2><p class="sub">Run these first if something is not working. Your keys are never shown.</p>
       <button class="btn" id="aiTestBtn">Test AI tutor</button><pre id="aiTestOut" class="codes hidden"></pre>
